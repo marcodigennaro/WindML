@@ -1,7 +1,7 @@
 # KPI lists
 
 - **Prediction Accuracy**: 
-|| Linear | Polynomial | Kernel |
+| Linear | Polynomial | Kernel |
 |-----| -------|-------|-------|
 | MAE |-------|-------|-------|
 | RMSE |-------|-------|-------|
