@@ -73,27 +73,3 @@ def create_learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5
 
     return learning_curve_data
 
-
-import matplotlib.pyplot as plt
-
-def plot_learning_curve(learning_curve_data, error_metric='mae'):
-    """
-    Plots the learning curve based on the provided learning curve data.
-
-    Parameters:
-    - learning_curve_data: Dictionary containing learning curve data.
-    - error_metric: Error metric to be plotted. Options: 'mae', 'mse', 'r2'.
-    """
-    subset_sizes = list(learning_curve_data.keys())
-    errors = [learning_curve_data[size][error_metric] for size in subset_sizes]
-
-    plt.figure()
-    plt.scatter(subset_sizes, errors, color='blue')
-    plt.loglog(subset_sizes, errors, label=f'{error_metric.upper()} with Best Parameters', linestyle='--')
-    plt.xlabel('Subset Size')
-    plt.ylabel(f'{error_metric.upper()}')
-    plt.title('Learning Curve with GridSearchCV')
-    plt.xscale('log')
-    plt.grid(True)
-    plt.legend()
-    plt.show()
