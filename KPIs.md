@@ -1,6 +1,12 @@
 # KPI lists
 
-- **Prediction Accuracy**: Measure the accuracy of the machine learning models in predicting wind turbine output parameters such as rotor torque, converter torque, and power output. Use metrics like Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), or R-squared for evaluation.
+- **Prediction Accuracy**: 
+|| Linear | Polynomial | Kernel |
+|-----| -------|-------|-------|
+| MAE |-------|-------|-------|
+| RMSE |-------|-------|-------|
+| R-squared |-------|-------|-------|
+
 - **Model Training Time**: Track the time taken to train the machine learning models on the enriched dataset. This indicates the efficiency of the model training process and scalability of the solution.
 - **Feature Importance**: Determine the importance of different features, including additional parameters like snowfall_1h, rainfall_1h, air density, and humidity, in predicting turbine output. Understanding feature importance provides insights into the factors influencing turbine performance.
 - **Scalability**: Assess the scalability of the developed models to handle data from multiple turbines or larger datasets. Evaluate computational resources required as dataset size increases.
