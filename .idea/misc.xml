@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (WindML)" project-jdk-type="Python SDK" />
+  <component name="Black">
+    <option name="sdkName" value="toqua" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="toqua" project-jdk-type="Python SDK" />
 </project>
