@@ -11,11 +11,20 @@ This repo provides a data analysis exemple of wind turbine performance predictio
 ### Getting started
 
 ```
+# Navigate to your local folder
 cd /your/local/folder
-git clone https://github.com/marcodigennaro/WindML  # clone this repository
-conda env create -f environment.yaml # create conda environment
-pip install . # insall this package
-jupyter-lab  # start notebook
+
+# Clone the WindML repository
+git clone https://github.com/marcodigennaro/WindML  
+
+# Create the Conda environment from the environment.yaml file
+conda env create -f environment.yaml 
+
+# Install this package
+pip install . 
+
+# Start Jupyter Lab
+jupyter-lab  
 ```
 
 Run any of the jupyter notebooks to visualize data and perform ML algorithms.
