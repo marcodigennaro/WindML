@@ -10,6 +10,7 @@ dependencies:
     - ipython-autotime
   - anaconda::pandas
   - anaconda::seaborn
+  - anaconda::statsmodels
   - conda-forge::jupyterlab
   - conda-forge::matplotlib
   - conda-forge::windrose

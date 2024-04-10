@@ -1,27 +1,10 @@
-from sklearn.datasets import make_regression
-from sklearn.model_selection import train_test_split, GridSearchCV, ShuffleSplit
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.kernel_ridge import KernelRidge
-from sklearn.metrics.pairwise import laplacian_kernel
-
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-
-from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import mean_absolute_error
-from sklearn.model_selection import train_test_split
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.datasets import make_regression
-from sklearn.linear_model import LinearRegression
-
-import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-def create_learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_npoints=5, cv_scoring='neg_mean_absolute_error'):
+
+def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_npoints=5,
+                                    cv_scoring='neg_mean_absolute_error'):
     """
     Generates a learning curve by training the model on subsets of the data
     and using GridSearchCV to find the best parameters for each subset.
@@ -72,4 +55,3 @@ def create_learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5
         print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
 
     return learning_curve_data
-
