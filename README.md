@@ -7,23 +7,15 @@ This repo provides a data analysis exemple of wind turbine performance predictio
 ### Prerequisites
 
 - Anaconda 3.6 or an equivalent Python 3.6 environment
-- Python 3.10 libraries: numpy, pandas, scipy, matplotlib, seaborn
 
-### Create conda environment 
-
-- Create conda environment from environment.ymal file
+### Getting started
 
 ```
-conda activate custom_environment
-```
-
-### Clone & install this repository
-
-```
-git clone https://github.com/marcodigennaro/WindML
 cd /your/local/folder
-pip install .
-jupyter-lab 
+git clone https://github.com/marcodigennaro/WindML  # clone this repository
+conda env create -f environment.yaml # create conda environment
+pip install . # insall this package
+jupyter-lab  # start notebook
 ```
 
 Run any of the jupyter notebooks to visualize data and perform ML algorithms.
