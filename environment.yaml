@@ -1,0 +1,16 @@
+name: toqua
+channels:
+  - anaconda
+  - conda-forge
+  - plotly
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - ipython-autotime
+  - anaconda::pandas
+  - anaconda::seaborn
+  - conda-forge::jupyterlab
+  - conda-forge::matplotlib
+  - conda-forge::windrose
+  - plotly::plotly
