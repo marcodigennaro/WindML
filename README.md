@@ -47,5 +47,7 @@ This project is licensed under the GPL v3 License - see the [LICENSE.md](https:/
  
 ### Acknowledgements
 
-This project was created as demonstration for [toqua.ai](toqua.ai)
+This project was created as demonstration for [toqua.ai](https://toqua.ai)
+
+
 
