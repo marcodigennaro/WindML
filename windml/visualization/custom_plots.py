@@ -17,7 +17,7 @@ def plot_monthly_evolution(df_energy, value_col):
     - value_col: The name of the column in df that represents the value to plot (e.g., energy production).
     """
     # Set up the figure with two subplots
-    f, ax = plt.subplots(2, 1, figsize=(8, 8), sharex=True)
+    f, ax = plt.subplots(2, 1, figsize=(8, 8))
 
     # Use a colormap for the monthly energy production scatter plot
     # Creating a normalized month value for colormap
