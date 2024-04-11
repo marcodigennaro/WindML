@@ -74,7 +74,7 @@ def plot_windrose_subplots(data, *, direction, var, **kwargs):
     ax.set_theta_zero_location('N')
 
 
-def plot_learning_curve(learning_curve_data, error_metric='mae'):
+def plot_learning_curves(lc_tuple, error_metric='mae'):
     """
     Plots the learning curve based on the provided learning curve data.
 
@@ -82,12 +82,13 @@ def plot_learning_curve(learning_curve_data, error_metric='mae'):
     - learning_curve_data: Dictionary containing learning curve data.
     - error_metric: Error metric to be plotted. Options: 'mae', 'mse', 'r2'.
     """
-    subset_sizes = list(learning_curve_data.keys())
-    errors = [learning_curve_data[size][error_metric] for size in subset_sizes]
 
-    plt.figure()
-    plt.scatter(subset_sizes, errors, color='blue')
-    plt.loglog(subset_sizes, errors, label=f'{error_metric.upper()} with Best Parameters', linestyle='--')
+    fig = plt.figure()
+    for (lc_data, lc_name) in lc_tuple:
+        subset_sizes = list(lc_data.keys())
+        errors = [lc_data[size][error_metric] for size in subset_sizes]
+        fig.scatter(subset_sizes, errors)
+        fig.loglog(subset_sizes, errors, label=lc_name, linestyle='--')
     plt.xlabel('Subset Size')
     plt.ylabel(f'{error_metric.upper()}')
     plt.title('Learning Curve with GridSearchCV')
@@ -95,7 +96,8 @@ def plot_learning_curve(learning_curve_data, error_metric='mae'):
     plt.grid(True)
     plt.legend()
     plt.show()
-
+    plt.savefig('learning_curve.jpeg')
+    return fig
 
 def scatter_plot(y_test, y_pred, title='Actual vs. Predicted', xlabel='True values', ylabel='Predicted values'):
     """

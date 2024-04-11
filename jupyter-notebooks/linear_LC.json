@@ -1,0 +1,9 @@
+{
+    "10": {
+        "mae": 858.0278480188972,
+        "mse": 761238.7150282012,
+        "R2": -7.5540289162237535,
+        "parameters": {
+            "regressor__fit_intercept": true
+        },
+        "y_train": 

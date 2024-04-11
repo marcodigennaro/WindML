@@ -2,10 +2,13 @@
 
 - **This package**
 - A list of **jupyter notebooks**
-  1. Scalability
-  2. Read_One
-  3. Read_All
-- **Scalability**
+  1. Column names analysis
+  2. Scalability
+  3. Data Analysis
+  4. Time Series and Forecast
+  5. Machine Learning 
+
+## **Scalability**
 The scalability of the developed models was assessed by evaluating computational resources required as dataset size increases for four different python libraries, namely: Pandas, Dask, Vaex and Modin.
 
 The results are shown below (test results from Processor: 3,1 GHz Dual-Core Intel Core i5 with Memory: 8 GB 2133 MHz)
@@ -29,8 +32,7 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
   - Memory Efficiency: Modin and Vaex show best results,
   - Ease of Use and Integration: Pandas is more available.
 
-
-- **Read_One**
+## **Data Analysis**
   1. Read and Clean data, check for missing values and outliers 
     1.1. Check for emtpy features: There is no empty column, so we can keep all features.
     1.2 Check uniformity of Database with respect to month, day and hour: The distribution of data is uniform.
@@ -41,15 +43,15 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
         - Removing outliers (keeping only -5 < Ba < 5)
 
 
+## **Machine Learning**
 
 - **Prediction Accuracy**: 
 
-| Metric     | Linear | Polynomial | Kernel |
-|------------|--------|------------|--------|
-| MAE        | xx     | 2.xx       | 0.xx   |
-| RMSE       | xx     | 2.xx       | 1.xx   |
-| R-squared  | xx     | 0.xx       | 0.xx   |
-| R-squared  | xx     | 0.xx       | 0.xx   |
+| Metric    | Linear             | Polynomial         | Kernel             |
+|-----------|--------------------|--------------------|--------------------|
+| MAE       | 123.83655569129044 | 26.563523071212337 | 18.069286899183126 |
+| RMSE      | 28737.204834443808 | 2105.0001314111532 | 1699.991079011466  |
+| R-squared | 0.8546457205691437 | 0.9895920141194349 | 0.9912831790974509 |
 
 
 - **Model Training Time**: 
@@ -57,14 +59,7 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
 - This indicates the efficiency of the model training process and scalability of the solution.
 
 
-| Metric     | Linear | Polynomial | Kernel |
-|------------|--------|------------|--------|
-| Model Training Time        | xx     | 2.xx       | 0.xx   |
+| Metric              | Linear | Polynomial | Kernel  |
+|---------------------|--------|------------|---------|
+| Model Training Time | 752 ms | 939 ms     | 5min 2s |
 
-- **Feature Importance**: Determine the importance of different features, including additional parameters like snowfall_1h, rainfall_1h, air density, and humidity, in predicting turbine output. Understanding feature importance provides insights into the factors influencing turbine performance.
-- **Generalization**: Evaluate the generalization ability of the models by testing them on unseen data from different turbines or locations. Split the dataset into training and testing sets and measure model performance on the test set.
-- **Value Proposition**: Quantify the potential value that the machine learning models can bring to Engie in terms of cost savings and maintenance efficiency. Consider scenarios where unexpected behavior is detected early, leading to proactive maintenance actions.
-- **Engagement with Client**: Measure the level of engagement and interest from Engie's Head of Wind Turbines during the meeting. Assess their feedback, questions, and willingness to explore further collaboration opportunities based on the presented results and value proposition.
-- **Interpretability**: Evaluate the interpretability of the machine learning models, especially in a domain like wind turbine operations where explainability is crucial for decision-making. Ensure that the models provide insights into the factors influencing turbine performance.
-- **Model Robustness**: Assess the robustness of the machine learning models against variations in input data, such as changes in weather conditions or sensor noise. Evaluate model performance under different scenarios to ensure reliability in real-world applications.
-- **Operational Efficiency**: Measure the efficiency gains achieved through the use of machine learning models for performance monitoring and maintenance scheduling. Quantify reductions in downtime and maintenance costs attributable to the predictive capabilities of the models.
