@@ -1,7 +1,33 @@
 # KPI lists
 
-- **This package**
-- 
+- **This package** and a list of **jupyter notebooks**
+
+- **Scalability**
+
+  - The scalability of the developed models was assessed by evaluating computational resources required as dataset size increases for four different python libraries.
+  The results are shown below:
+
+| File       | Size (MB) |
+|------------|-----------|
+| R80736.csv | 51.41     |
+| R80721.csv | 51.20     |
+| R80790.csv | 51.03     |
+| R80711.csv | 51.68     |
+
+| Library | Time taken (sec) | Max memory usage (MB) |
+|---------|------------------|-----------------------|
+| pandas  | 6.13             | 735.23 MB             |
+| dask    | 18.38            | 603.20 MB             |
+| vaex    | 3.11             | 268.40 MB             |
+| modin   | 11.60            | 245.38 MB             |
+
+  - Time Efficiency: Lower time values indicate better performance. Vaex and Pandas show best results,
+  - Memory Efficiency: Lower memory usage is crucial for scalability, especially for processing large datasets on limited hardware. Vaex and Modin demonstrate significant memory efficiency,
+  - Ease of Use and Integration: Pandas is more largely available and robust.
+
+* Processor: 3,1 GHz Dual-Core Intel Core i5
+* Memory: 8 GB 2133 MHz
+
 - **Prediction Accuracy**: 
 
 | Metric     | Linear | Polynomial | Kernel |
@@ -22,7 +48,6 @@
 | Model Training Time        | xx     | 2.xx       | 0.xx   |
 
 - **Feature Importance**: Determine the importance of different features, including additional parameters like snowfall_1h, rainfall_1h, air density, and humidity, in predicting turbine output. Understanding feature importance provides insights into the factors influencing turbine performance.
-- **Scalability**: Assess the scalability of the developed models to handle data from multiple turbines or larger datasets. Evaluate computational resources required as dataset size increases.
 - **Generalization**: Evaluate the generalization ability of the models by testing them on unseen data from different turbines or locations. Split the dataset into training and testing sets and measure model performance on the test set.
 - **Value Proposition**: Quantify the potential value that the machine learning models can bring to Engie in terms of cost savings and maintenance efficiency. Consider scenarios where unexpected behavior is detected early, leading to proactive maintenance actions.
 - **Engagement with Client**: Measure the level of engagement and interest from Engie's Head of Wind Turbines during the meeting. Assess their feedback, questions, and willingness to explore further collaboration opportunities based on the presented results and value proposition.

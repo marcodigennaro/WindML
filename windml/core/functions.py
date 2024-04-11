@@ -39,18 +39,29 @@ import vaex
 import modin.pandas as mpd
 
 
-def read_and_concatenate_csv(folder_path):
+def compare_data_libraries(folder_path):
     libraries = ['pandas', 'dask', 'vaex', 'modin']
     dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
 
+    # Gather CSV files
+    csv_files = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if
+                 file.endswith('.csv') and file.startswith('R')]
+
+    # Log file details
+    print(f"Found {len(csv_files)} CSV files.")
+    for file in csv_files:
+        size = os.path.getsize(file) / (1024 * 1024)  # Size in MB
+        print(f"File: {os.path.basename(file)}, Size: {size:.2f} MB")
+
     for library in libraries:
         start_time = time.time()
-        csv_files = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith('.csv')]
 
         if library == 'pandas':
             dataframes = [pd.read_csv(file, dtype=dtypes) for file in csv_files]
             df = pd.concat(dataframes)
         elif library == 'dask':
+            from distributed import Client
+            client = Client()
             dataframes = [dd.read_csv(file, dtype=dtypes) for file in csv_files]
             df = dd.concat(dataframes).compute()
         elif library == 'vaex':
@@ -64,5 +75,46 @@ def read_and_concatenate_csv(folder_path):
         print(
             f"Library: {library}, Time taken: {end_time - start_time:.2f} seconds, Max memory usage: {max_memory:.2f} MB")
 
-# Example usage (replace 'your_folder_path' with the actual path):
-# read_and_concatenate_csv('your_folder_path')
+
+def load_one(filename):
+    """Load a CSV file and measure the time and memory usage."""
+    start_time = time.time()
+    dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
+
+    df = pd.read_csv(filename,
+                     dtype=dtypes,
+                     parse_dates=['Date_time'],
+                     date_format='%Y-%m-%d %H:%M:%S%z'
+                     )
+    end_time = time.time()
+    df['Date_time'] = pd.to_datetime(df['Date_time'], utc=True)
+
+    memory_usage = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
+    print(f"Loading time: {end_time - start_time:.2f} seconds.")
+    print(f"Memory usage: {memory_usage:.2f} MB.")
+    print(f"{len(df)} Lines found.")
+
+    return df
+
+
+def load_all(folder_path):
+    """Load all CSV files and measure the time and memory usage."""
+    start_time = time.time()
+    dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
+
+    # Gather CSV files
+    csv_files = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if
+                 file.endswith('.csv') and file.startswith('R')]
+
+    dataframes = [pd.read_csv(file, dtype=dtypes, parse_dates=['Date_time'], date_format='%Y-%m-%d %H:%M:%S%z') for file
+                  in csv_files]
+    df = pd.concat(dataframes)
+    end_time = time.time()
+    df['Date_time'] = pd.to_datetime(df['Date_time'], utc=True)
+
+    memory_usage = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
+    print(f"Loading time: {end_time - start_time:.2f} seconds.")
+    print(f"Memory usage: {memory_usage:.2f} MB.")
+    print(f"{len(df)} Lines found.")
+
+    return df

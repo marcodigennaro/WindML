@@ -14,6 +14,7 @@ dependencies:
   - conda-forge::windrose
   - conda-forge::dask
   - conda-forge::vaex
+  - conda-forge::pyarrow
   - conda-forge::modin-all
   - plotly::plotly
   - pip:
