@@ -3,8 +3,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
-def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_npoints=5,
-                                    cv_scoring='neg_mean_absolute_error'):
+def learning_curve(X, y, model, param_grid, lc_npoints=5, cv_npoints=5, cv_scoring='neg_mean_absolute_error'):
     """
     Generates a learning curve by training the model on subsets of the data
     and using GridSearchCV to find the best parameters for each subset.
@@ -55,7 +54,6 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
             'y_pred_test': y_pred_test
         }
 
-        print(f"Subset size: {size}, Best parameters: {
-              grid_search.best_params_}")
+        print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
 
     return learning_curve_data

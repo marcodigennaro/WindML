@@ -148,3 +148,34 @@ def polish_data(df):
     df['HourOfDay'] = df.index.hour
 
     return df
+
+
+def find_highly_correlated_variables(correlation_matrix, target_variable='P_avg', correlation_threshold=0.1):
+    """
+    Identifies and returns a DataFrame with variable names and their correlation values
+    that have correlations beyond a specified threshold with the target variable in the given correlation matrix.
+
+    Parameters:
+    - correlation_matrix (pd.DataFrame): A pandas DataFrame representing the correlation matrix.
+    - target_variable (str): The name of the column in the correlation matrix for which to find correlations.
+    - correlation_threshold (float): The minimum absolute correlation value to consider.
+
+    Returns:
+    - pd.DataFrame: A DataFrame containing variable names and their correlation values with the target variable,
+                    sorted by the absolute value of the correlation.
+    """
+
+    # Filter variables based on the correlation threshold
+    filtered_correlations = correlation_matrix[target_variable][
+        (correlation_matrix[target_variable].abs() > correlation_threshold)]
+
+    # Remove the target variable to exclude self-correlation
+    if target_variable in filtered_correlations:
+        filtered_correlations = filtered_correlations.drop(index=target_variable)
+
+    # Create a DataFrame from the filtered correlation series
+    result_df = filtered_correlations.abs().sort_values(ascending=False).reset_index()
+    result_df.columns = ['Variable', 'Correlation']
+
+    return result_df
+
