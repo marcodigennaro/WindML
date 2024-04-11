@@ -28,4 +28,3 @@ def select_time_subset(read_df, year=None, month=None, hour=None, date_column='D
         subset = subset.loc[subset[date_column].dt.hour == hour]
 
     return subset
-

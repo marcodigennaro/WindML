@@ -24,10 +24,12 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
     - Dictionary: Subset size mapped to dictionary of metrics and best parameters.
     """
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
     max_size = len(X_train)
-    subset_sizes = np.logspace(np.log10(10), np.log10(max_size), num=lc_npoints, dtype=int)
+    subset_sizes = np.logspace(np.log10(10), np.log10(
+        max_size), num=lc_npoints, dtype=int)
 
     learning_curve_data = {}
 
@@ -37,7 +39,8 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
         y_train_subset = y_train.sample(size)
 
         # Use GridSearchCV to find the best model parameters for this subset
-        grid_search = GridSearchCV(model, param_grid, cv=cv_npoints, scoring=cv_scoring)
+        grid_search = GridSearchCV(
+            model, param_grid, cv=cv_npoints, scoring=cv_scoring)
         grid_search.fit(X_train_subset, y_train_subset)
 
         y_pred_train = grid_search.predict(X_train_subset)
@@ -54,7 +57,8 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
             'y_pred_test': y_pred_test
         }
 
-        print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
+        print(f"Subset size: {size}, Best parameters: {
+              grid_search.best_params_}")
 
     return learning_curve_data
 
@@ -75,7 +79,8 @@ def ar_forecast(df, value_col, lags=5, train_size=0.8):
     """
 
     # Create a temporary date column for sorting and forecasting
-    df['date'] = pd.to_datetime(df['Year'].astype(str) + '-' + df['Month'].astype(str))
+    df['date'] = pd.to_datetime(df['Year'].astype(
+        str) + '-' + df['Month'].astype(str))
 
     # Ensure df is sorted by the new date column
     df = df.sort_values('date').reset_index(drop=True)
@@ -98,6 +103,7 @@ def ar_forecast(df, value_col, lags=5, train_size=0.8):
 
     # Prepare the forecast DataFrame using test dates
     forecast_df = test[['Year', 'Month']].copy()
-    forecast_df[f'pred_{value_col}'] = forecast_values.values  # Ensure forecast values align with test dates
+    # Ensure forecast values align with test dates
+    forecast_df[f'pred_{value_col}'] = forecast_values.values
 
     return forecast_df

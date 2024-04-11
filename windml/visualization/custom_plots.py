@@ -28,8 +28,10 @@ def plot_monthly_evolution(df_energy, value_col):
     # Scatter plot for annual comparison with connected dots
     for year in df_energy['Year'].unique():
         year_data = df_energy[df_energy['Year'] == year]
-        ax[0].scatter(year_data['Month'], year_data[value_col], label=year, edgecolor='black')
-        ax[0].plot(year_data['Month'], year_data[value_col], linestyle='--', alpha=0.5)
+        ax[0].scatter(year_data['Month'], year_data[value_col],
+                      label=year, edgecolor='black')
+        ax[0].plot(year_data['Month'], year_data[value_col],
+                   linestyle='--', alpha=0.5)
 
     ax[0].set_title(f'Monthly {value_col} - Annual Comparison')
     ax[0].set_xlabel('Month')
@@ -39,7 +41,8 @@ def plot_monthly_evolution(df_energy, value_col):
     # Box plot for monthly distribution using the same colormap concept
     # Since boxplot won't directly use the color mapping, manually assign colors
     month_colors = df_energy.groupby('Month')['color'].first().values
-    sns.boxplot(x="Month", y=value_col, data=df_energy, ax=ax[1], palette=month_colors)
+    sns.boxplot(x="Month", y=value_col, data=df_energy,
+                ax=ax[1], palette=month_colors)
 
     ax[1].set_title(f'Monthly {value_col} - Boxplot')
     ax[1].set_xlabel('Month')
@@ -64,9 +67,12 @@ def plot_windrose_subplots(data, *, direction, var, **kwargs):
 
     # Set the same scale for radial and angular axes
     ax.set_rmax(3500)  # Set the maximum radial value
-    ax.set_rticks([700, 1400, 2100, 2800, 3500], labels = ['700', '1400', '2100', '2800', '3500'])  # Set radial ticks
-    ax.set_theta_direction(-1)  # Set the direction of the angular axis (counterclockwise)
-    ax.set_theta_zero_location('N')  # Set the zero location of the angular axis (north)
+    ax.set_rticks([700, 1400, 2100, 2800, 3500], labels=[
+                  '700', '1400', '2100', '2800', '3500'])  # Set radial ticks
+    # Set the direction of the angular axis (counterclockwise)
+    ax.set_theta_direction(-1)
+    # Set the zero location of the angular axis (north)
+    ax.set_theta_zero_location('N')
 
 
 def plot_learning_curve(learning_curve_data, error_metric='mae'):
@@ -82,7 +88,8 @@ def plot_learning_curve(learning_curve_data, error_metric='mae'):
 
     plt.figure()
     plt.scatter(subset_sizes, errors, color='blue')
-    plt.loglog(subset_sizes, errors, label=f'{error_metric.upper()} with Best Parameters', linestyle='--')
+    plt.loglog(subset_sizes, errors, label=f'{
+               error_metric.upper()} with Best Parameters', linestyle='--')
     plt.xlabel('Subset Size')
     plt.ylabel(f'{error_metric.upper()}')
     plt.title('Learning Curve with GridSearchCV')

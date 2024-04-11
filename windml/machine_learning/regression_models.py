@@ -22,10 +22,12 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
     - Dictionary: Subset size mapped to dictionary of metrics and best parameters.
     """
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
     max_size = len(X_train)
-    subset_sizes = np.logspace(np.log10(10), np.log10(max_size), num=lc_npoints, dtype=int)
+    subset_sizes = np.logspace(np.log10(10), np.log10(
+        max_size), num=lc_npoints, dtype=int)
 
     learning_curve_data = {}
 
@@ -35,7 +37,8 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
         y_train_subset = y_train.sample(size)
 
         # Use GridSearchCV to find the best model parameters for this subset
-        grid_search = GridSearchCV(model, param_grid, cv=cv_npoints, scoring=cv_scoring)
+        grid_search = GridSearchCV(
+            model, param_grid, cv=cv_npoints, scoring=cv_scoring)
         grid_search.fit(X_train_subset, y_train_subset)
 
         y_pred_train = grid_search.predict(X_train_subset)
@@ -52,6 +55,7 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
             'y_pred_test': y_pred_test
         }
 
-        print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
+        print(f"Subset size: {size}, Best parameters: {
+              grid_search.best_params_}")
 
     return learning_curve_data
