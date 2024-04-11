@@ -1,4 +1,4 @@
-name: toqua
+name: windml
 channels:
   - anaconda
   - conda-forge
