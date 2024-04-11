@@ -9,6 +9,7 @@ dependencies:
   - anaconda::pandas
   - anaconda::seaborn
   - anaconda::statsmodels
+  - anaconda::scikit-learn
   - conda-forge::jupyterlab
   - conda-forge::matplotlib
   - conda-forge::windrose
@@ -20,3 +21,4 @@ dependencies:
   - pip:
       - ipython-autotime
       - memory_profiler
+      - scikit-learn-intelex

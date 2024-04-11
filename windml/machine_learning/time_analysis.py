@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import pandas as pd
 from statsmodels.tsa.ar_model import AutoReg
+from statsmodels.tsa.arima.model import ARIMA
 
 
 def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_npoints=5,
@@ -57,8 +58,7 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
             'y_pred_test': y_pred_test
         }
 
-        print(f"Subset size: {size}, Best parameters: {
-              grid_search.best_params_}")
+        print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
 
     return learning_curve_data
 
@@ -104,6 +104,49 @@ def ar_forecast(df, value_col, lags=5, train_size=0.8):
     # Prepare the forecast DataFrame using test dates
     forecast_df = test[['Year', 'Month']].copy()
     # Ensure forecast values align with test dates
+    forecast_df[f'pred_{value_col}'] = forecast_values.values
+
+    return forecast_df
+
+
+def arima_forecast(df, value_col, order=(1, 1, 1), train_size=0.8):
+    """
+    Performs ARIMA forecasting on time series data with Year and Month columns.
+    Trains on a specified percentage of the data and predicts for the test set dates.
+
+    Parameters:
+    - df: DataFrame containing the time series data.
+    - value_col: String, the name of the column in df that contains the time series values.
+    - order: Tuple of the form (p,d,q) where p is the order of the AR term,
+      d is the degree of differencing, and q is the order of the MA term.
+    - train_size: The proportion of the dataset to include in the train split.
+
+    Returns:
+    - forecast_df: A DataFrame containing the forecasted values for the test dates.
+    """
+
+    # Create a temporary date column for sorting and forecasting
+    df['date'] = pd.to_datetime(df['Year'].astype(str) + '-' + df['Month'].astype(str))
+
+    # Ensure df is sorted by the new date column
+    df = df.sort_values('date').reset_index(drop=True)
+
+    # Determine the split point for training and testing
+    split_point = int(len(df) * train_size)
+
+    # Split data into training and testing sets
+    train = df.iloc[:split_point]
+    test = df.iloc[split_point:]
+
+    # Fit an ARIMA model on the training data
+    model = ARIMA(train[value_col], order=order)
+    model_fitted = model.fit()
+
+    # Make forecast for the test period
+    forecast_values = model_fitted.forecast(steps=len(test))
+
+    # Prepare the forecast DataFrame using test dates
+    forecast_df = test[['Year', 'Month']].copy()
     forecast_df[f'pred_{value_col}'] = forecast_values.values
 
     return forecast_df

@@ -1,11 +1,14 @@
 # KPI lists
 
-- **This package** and a list of **jupyter notebooks**
-
+- **This package**
+- A list of **jupyter notebooks**
+  1. Scalability
+  2. Read_One
+  3. Read_All
 - **Scalability**
+The scalability of the developed models was assessed by evaluating computational resources required as dataset size increases for four different python libraries, namely: Pandas, Dask, Vaex and Modin.
 
-  - The scalability of the developed models was assessed by evaluating computational resources required as dataset size increases for four different python libraries.
-  The results are shown below:
+The results are shown below (test results from Processor: 3,1 GHz Dual-Core Intel Core i5 with Memory: 8 GB 2133 MHz)
 
 | File       | Size (MB) |
 |------------|-----------|
@@ -21,12 +24,23 @@
 | vaex    | 3.11             | 268.40 MB             |
 | modin   | 11.60            | 245.38 MB             |
 
-  - Time Efficiency: Lower time values indicate better performance. Vaex and Pandas show best results,
-  - Memory Efficiency: Lower memory usage is crucial for scalability, especially for processing large datasets on limited hardware. Vaex and Modin demonstrate significant memory efficiency,
-  - Ease of Use and Integration: Pandas is more largely available and robust.
+**Conclusion**:
+  - Time Efficiency: Vaex and Pandas show best results,
+  - Memory Efficiency: Modin and Vaex show best results,
+  - Ease of Use and Integration: Pandas is more available.
 
-* Processor: 3,1 GHz Dual-Core Intel Core i5
-* Memory: 8 GB 2133 MHz
+
+- **Read_One**
+  1. Read and Clean data, check for missing values and outliers 
+    1.1. Check for emtpy features: There is no empty column, so we can keep all features.
+    1.2 Check uniformity of Database with respect to month, day and hour: The distribution of data is uniform.
+    1.3 Exploratory Data Analysis (EDA)
+    1.4 Find univariate outliers using box plots
+      - Pitch_angle (Ba_avg):
+        - Discretization issue with 'Ba_avg' -> introducing 'rounded_Ba_avg'
+        - Removing outliers (keeping only -5 < Ba < 5)
+
+
 
 - **Prediction Accuracy**: 
 

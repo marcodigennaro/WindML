@@ -76,7 +76,7 @@ def compare_data_libraries(folder_path):
             f"Library: {library}, Time taken: {end_time - start_time:.2f} seconds, Max memory usage: {max_memory:.2f} MB")
 
 
-def load_one(filename):
+def load_one(filename, library='pandas'):
     """Load a CSV file and measure the time and memory usage."""
     start_time = time.time()
     dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
@@ -87,7 +87,8 @@ def load_one(filename):
                      date_format='%Y-%m-%d %H:%M:%S%z'
                      )
     end_time = time.time()
-    df['Date_time'] = pd.to_datetime(df['Date_time'], utc=True)
+
+    df = polish_data(df)
 
     memory_usage = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
     print(f"Loading time: {end_time - start_time:.2f} seconds.")
@@ -106,15 +107,44 @@ def load_all(folder_path):
     csv_files = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if
                  file.endswith('.csv') and file.startswith('R')]
 
-    dataframes = [pd.read_csv(file, dtype=dtypes, parse_dates=['Date_time'], date_format='%Y-%m-%d %H:%M:%S%z') for file
-                  in csv_files]
+    dataframes = [
+        pd.read_csv(file,
+                    dtype=dtypes,
+                    parse_dates=['Date_time'],
+                    date_format='%Y-%m-%d %H:%M:%S%z') for file in csv_files
+        ]
+
     df = pd.concat(dataframes)
     end_time = time.time()
-    df['Date_time'] = pd.to_datetime(df['Date_time'], utc=True)
+
+    df = polish_data(df)
 
     memory_usage = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
     print(f"Loading time: {end_time - start_time:.2f} seconds.")
     print(f"Memory usage: {memory_usage:.2f} MB.")
     print(f"{len(df)} Lines found.")
+
+    return df
+
+
+def polish_data(df):
+
+    # It's good practice to assign the date time to the index
+    df = df.set_index('Date_time')
+
+    # Assign datetime format to column 'Date_time'
+    df.index = pd.to_datetime(df.index, utc=True)
+
+    # Extract the year
+    df['Year'] = df.index.year
+
+    # Extract the month
+    df['Month'] = df.index.month
+
+    # Extract day of the week (Monday=0, Sunday=6)
+    df['DayOfWeek'] = df.index.dayofweek
+
+    # Extract time of day
+    df['HourOfDay'] = df.index.hour
 
     return df

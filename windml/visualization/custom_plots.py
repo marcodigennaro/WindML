@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
 from windrose import WindroseAxes, plot_windrose
 from matplotlib import cm
 
@@ -88,8 +87,7 @@ def plot_learning_curve(learning_curve_data, error_metric='mae'):
 
     plt.figure()
     plt.scatter(subset_sizes, errors, color='blue')
-    plt.loglog(subset_sizes, errors, label=f'{
-               error_metric.upper()} with Best Parameters', linestyle='--')
+    plt.loglog(subset_sizes, errors, label=f'{error_metric.upper()} with Best Parameters', linestyle='--')
     plt.xlabel('Subset Size')
     plt.ylabel(f'{error_metric.upper()}')
     plt.title('Learning Curve with GridSearchCV')
