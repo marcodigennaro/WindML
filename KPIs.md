@@ -34,14 +34,19 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
 
 ## **Data Analysis**
   1. Read and Clean data, check for missing values and outliers 
-    1.1. Check for emtpy features: There is no empty column, so we can keep all features.
-    1.2 Check uniformity of Database with respect to month, day and hour: The distribution of data is uniform.
-    1.3 Exploratory Data Analysis (EDA)
-    1.4 Find univariate outliers using box plots
-      - Pitch_angle (Ba_avg):
-        - Discretization issue with 'Ba_avg' -> introducing 'rounded_Ba_avg'
-        - Removing outliers (keeping only -5 < Ba < 5)
+     1. Check for emtpy features: There is no empty column, so we can keep all features.
+     2. Check uniformity of Database with respect to month, day and hour: The distribution of data is uniform.
+     3. Exploratory Data Analysis (EDA)
+     4. Find univariate outliers using box plots
+        - Pitch_angle (Ba_avg):
+          - Discretization issue with 'Ba_avg' -> introducing 'rounded_Ba_avg'
+          - Removing outliers (keeping only -15 < Ba < 15)
 
+
+## **Time Series Analysis**
+
+Training on time data only does not give good results
+![plot](./directory_1/directory_2/.../directory_n/plot.png)
 
 ## **Machine Learning**
 

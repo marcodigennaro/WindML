@@ -17,6 +17,7 @@ dependencies:
   - conda-forge::vaex
   - conda-forge::pyarrow
   - conda-forge::modin-all
+  - conda-forge::xgboost
   - plotly::plotly
   - pip:
       - ipython-autotime
