@@ -21,7 +21,7 @@ git clone https://github.com/marcodigennaro/WindML
 conda env create -f environment.yaml 
 
 # Activate the Conda environment
-conda activate winml
+conda activate windml
 
 # Install this package
 pip install . 

@@ -1,13 +1,26 @@
 # KPI lists
 
+- **This package**
+- 
 - **Prediction Accuracy**: 
-| Linear | Polynomial | Kernel |
-|-----| -------|-------|-------|
-| MAE |-------|-------|-------|
-| RMSE |-------|-------|-------|
-| R-squared |-------|-------|-------|
 
-- **Model Training Time**: Track the time taken to train the machine learning models on the enriched dataset. This indicates the efficiency of the model training process and scalability of the solution.
+| Metric     | Linear | Polynomial | Kernel |
+|------------|--------|------------|--------|
+| MAE        | xx     | 2.xx       | 0.xx   |
+| RMSE       | xx     | 2.xx       | 1.xx   |
+| R-squared  | xx     | 0.xx       | 0.xx   |
+| R-squared  | xx     | 0.xx       | 0.xx   |
+
+
+- **Model Training Time**: 
+- Track the time taken to train the machine learning models on the enriched dataset. 
+- This indicates the efficiency of the model training process and scalability of the solution.
+
+
+| Metric     | Linear | Polynomial | Kernel |
+|------------|--------|------------|--------|
+| Model Training Time        | xx     | 2.xx       | 0.xx   |
+
 - **Feature Importance**: Determine the importance of different features, including additional parameters like snowfall_1h, rainfall_1h, air density, and humidity, in predicting turbine output. Understanding feature importance provides insights into the factors influencing turbine performance.
 - **Scalability**: Assess the scalability of the developed models to handle data from multiple turbines or larger datasets. Evaluate computational resources required as dataset size increases.
 - **Generalization**: Evaluate the generalization ability of the models by testing them on unseen data from different turbines or locations. Split the dataset into training and testing sets and measure model performance on the test set.

@@ -6,12 +6,16 @@ channels:
 dependencies:
   - python=3.10
   - pip
-  - pip:
-    - ipython-autotime
   - anaconda::pandas
   - anaconda::seaborn
   - anaconda::statsmodels
   - conda-forge::jupyterlab
   - conda-forge::matplotlib
   - conda-forge::windrose
+  - conda-forge::dask
+  - conda-forge::vaex
+  - conda-forge::modin-all
   - plotly::plotly
+  - pip:
+      - ipython-autotime
+      - memory_profiler
