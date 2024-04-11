@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import pandas as pd
+from statsmodels.tsa.ar_model import AutoReg
 
 
 def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_npoints=5,
@@ -56,9 +57,6 @@ def learning_curve_with_grid_search(X, y, model, param_grid, lc_npoints=5, cv_np
         print(f"Subset size: {size}, Best parameters: {grid_search.best_params_}")
 
     return learning_curve_data
-=======
-import pandas as pd
-from statsmodels.tsa.ar_model import AutoReg
 
 
 def ar_forecast(df, value_col, lags=5, train_size=0.8):
@@ -103,4 +101,3 @@ def ar_forecast(df, value_col, lags=5, train_size=0.8):
     forecast_df[f'pred_{value_col}'] = forecast_values.values  # Ensure forecast values align with test dates
 
     return forecast_df
->>>>>>> 90a383d50adc0c335a3f71134c4a4187eb4705f1
