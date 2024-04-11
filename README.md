@@ -6,7 +6,7 @@ This repo provides a data analysis exemple of wind turbine performance predictio
 
 ### Prerequisites
 
-- Anaconda 3.6 or an equivalent Python 3.6 environment
+- Anaconda 3.6 or an equivalent Python 3.10 environment
 
 ### Getting started
 
@@ -16,6 +16,9 @@ cd /your/local/folder
 
 # Clone the WindML repository
 git clone https://github.com/marcodigennaro/WindML  
+
+# Enter the folder
+cd WindML/
 
 # Create the Conda environment from the environment.yaml file
 conda env create -f environment.yaml 
@@ -43,11 +46,6 @@ Marco Di Gennaro
 
 This project is licensed under the GPL v3 License - see the [LICENSE.md](https://github.com/marcodigennaro/WindML/blob/main/LICENSE.md) file for details
 
-### Contents
-
-- List of KPIs
-- Set of Jupyter notebooks:
-  - Column names
  
 ### Acknowledgements
 

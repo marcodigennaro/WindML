@@ -83,21 +83,19 @@ def plot_learning_curves(lc_tuple, error_metric='mae'):
     - error_metric: Error metric to be plotted. Options: 'mae', 'mse', 'r2'.
     """
 
-    fig = plt.figure()
+    fig, ax = plt.subplots()
     for (lc_data, lc_name) in lc_tuple:
         subset_sizes = list(lc_data.keys())
         errors = [lc_data[size][error_metric] for size in subset_sizes]
-        fig.scatter(subset_sizes, errors)
-        fig.loglog(subset_sizes, errors, label=lc_name, linestyle='--')
+        ax.scatter(subset_sizes, errors)
+        ax.loglog(subset_sizes, errors, label=lc_name, linestyle='--')
     plt.xlabel('Subset Size')
     plt.ylabel(f'{error_metric.upper()}')
     plt.title('Learning Curve with GridSearchCV')
     plt.xscale('log')
     plt.grid(True)
     plt.legend()
-    plt.show()
-    plt.savefig('learning_curve.jpeg')
-    return fig
+    return (fig, ax)
 
 def scatter_plot(y_test, y_pred, title='Actual vs. Predicted', xlabel='True values', ylabel='Predicted values'):
     """

@@ -42,11 +42,13 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
           - Discretization issue with 'Ba_avg' -> introducing 'rounded_Ba_avg'
           - Removing outliers (keeping only -15 < Ba < 15)
 
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/windrose.jpeg?raw=true)
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/heatmap.jpeg?raw=true)
 
 ## **Time Series Analysis**
 
-Training on time data only does not give good results
-![plot](./directory_1/directory_2/.../directory_n/plot.png)
+Training on time data only does not give good results:
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/XGBR.jpeg?raw=true)
 
 ## **Machine Learning**
 
@@ -67,4 +69,5 @@ Training on time data only does not give good results
 | Metric              | Linear | Polynomial | Kernel  |
 |---------------------|--------|------------|---------|
 | Model Training Time | 752 ms | 939 ms     | 5min 2s |
+
 
