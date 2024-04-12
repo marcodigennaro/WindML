@@ -6,7 +6,7 @@ This repo provides a data analysis exemple of wind turbine performance predictio
 
 ### Prerequisites
 
-- Anaconda 3.6 or an equivalent Python 3.10 environment
+- Anaconda 3.6
 
 ### Getting started
 
@@ -34,6 +34,18 @@ jupyter-lab
 ```
 
 Run any of the jupyter notebooks to visualize data and perform ML algorithms.
+Data should be downloaded beforehand. 
+
+### Content of the Jupyter Notebooks
+
+  1. Column names analysis
+  2. Scalability
+  3. Data Analysis
+  4. Time Series and Forecast
+  5. Machine Learning 
+
+6. Check KPI.md for more insights.
+
 
 ### Author
 

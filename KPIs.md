@@ -47,10 +47,47 @@ The results are shown below (test results from Processor: 3,1 GHz Dual-Core Inte
 
 ## **Time Series Analysis**
 
-Training on time data only does not give good results:
+### 1. Calculate Produced Energy and Capacity Factor
+In this part we calculate three quantities to be analysed as a funciton of the time:
+
+- The **Average Energy** can be calculated from the average Active Power (P_avg, in kW)
+- The **Produced Energy** is the integral over time of the average energy
+- The **Capacity Factor** is the ratio of the real power output and nominal rated power
+
+### 2. Test Auto-Regression analysis
+- Auto-Regression: What if we could just find a stationary explaination for the data series?
+
+### 3. Test Regularizing gradient boosting framework with XGBOOST
+- Feature importance analysis reveals that the month is the most important variable
+
+### Conclusions
+
+- Predicting the value of the produced power by using its own value only does not produce relevant results
+
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/AR.jpeg?raw=true)
 ![plot](https://github.com/marcodigennaro/WindML/blob/main/images/XGBR.jpeg?raw=true)
 
 ## **Machine Learning**
+
+
+Desired output of the turbine: 
+- rotor torque
+- converter torque
+- power output
+
+Only Active Power (P_avg) and Rotor Torque (Rm_avg) are availeble. 
+
+The list of features used for learning is:
+```[ 'Ws_avg', 'Rs_avg', 'Yt_avg', 'Ba_avg']```
+
+### 1. Create a set of pipelines & define a parameter grid to optimize kernels
+
+- Linear
+- Polynomial
+- Kernel Ridge Regression
+
+### 2. Compare the different models, once optimized, versus the size of the database
+
 
 - **Prediction Accuracy**: 
 
@@ -62,12 +99,20 @@ Training on time data only does not give good results:
 
 
 - **Model Training Time**: 
-- Track the time taken to train the machine learning models on the enriched dataset. 
-- This indicates the efficiency of the model training process and scalability of the solution.
-
 
 | Metric              | Linear | Polynomial | Kernel  |
 |---------------------|--------|------------|---------|
 | Model Training Time | 752 ms | 939 ms     | 5min 2s |
 
+
+### 3. Consider the contribution of 'enriched variables'
+
+- Adding ```['rain_1h', 'snow_1h', 'humidity']``` to the descriptor does not improve the system prediction accuracy.
+
+### Conclusion
+
+- Wind speed, Rotor speed, Nacelle temperature and Pitch angle are enough to build a Machine Learning Model
+- Kernel models are notably heavy in memory, especially KRR ~O(N^2). This limitation imposed me to limit the training on 20000 entries
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/learning_curve.jpeg?raw=true)
+![plot](https://github.com/marcodigennaro/WindML/blob/main/images/learning_curve_enriched.jpeg?raw=true)
 
