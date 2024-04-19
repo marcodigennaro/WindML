@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "windml"
+name = "toqua_test"
 version = "0.1.0"
 description = "A data science package to analyze wind turbines data"
 authors = ["Marco Di Gennaro <m.di.gennaro@outlook.com>"]
@@ -7,7 +7,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
 
 [build-system]
 requires = ["poetry-core"]
