@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "windml"
 version = "0.1.0"
-description = ""
-authors = ["Marco Di Gennaro <m.di.gennaro@outlook.com>"]
+description = "A Machine Learning tutorial on wind turbines data"
+authors = ["Marco Di Gennaro <mdg@atomistic-modelling.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
