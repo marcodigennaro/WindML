@@ -1,0 +1,25 @@
+name: windml
+channels:
+  - anaconda
+  - conda-forge
+  - plotly
+dependencies:
+  - python=3.10
+  - pip
+  - anaconda::pandas
+  - anaconda::seaborn
+  - anaconda::statsmodels
+  - anaconda::scikit-learn
+  - conda-forge::jupyterlab
+  - conda-forge::matplotlib
+  - conda-forge::windrose
+  - conda-forge::dask
+  - conda-forge::vaex
+  - conda-forge::pyarrow
+  - conda-forge::modin-all
+  - conda-forge::xgboost
+  - plotly::plotly
+  - pip:
+      - ipython-autotime
+      - memory_profiler
+      - scikit-learn-intelex
