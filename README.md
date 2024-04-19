@@ -64,6 +64,7 @@ Data should be downloaded beforehand.
      - Performs Auto-Regression analysis and Regularizing gradient boosting 
 
      ![plot](https://github.com/marcodigennaro/windml/blob/main/images/time_evolution_P_avg.jpeg)
+     ![plot](https://github.com/marcodigennaro/windml/blob/main/images/monthly_evolution_P_avg.jpeg)
           
   3. Data Analysis
 
@@ -81,6 +82,7 @@ Data should be downloaded beforehand.
      - Perform pipeline including grid search analysis for parameter optimization
      - Compare learning by plotting Learning Curve
 
+     ![plot](https://github.com/marcodigennaro/windml/blob/main/images/scatter_plot.jpeg)
      ![plot](https://github.com/marcodigennaro/windml/blob/main/images/learning_curve.jpeg)
 
 ### Data
