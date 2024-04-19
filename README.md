@@ -1,18 +1,15 @@
 # WindML
 
-<<<<<<< HEAD
-This repo provides a data analysis exemple of wind turbine performance prediction based on weather parameters. A simple Machine Learning model is built to predict wind turbine power output and torque. ENGIE open dataset is used as a practice sample.
-=======
 This repo provides a tutorial of wind turbine performance prediction based on weather parameters. 
 
 Data are based on a subset of the ENGIE open dataset.
->>>>>>> 95dd8a42b2e213256fc3e15e747b1c0703bc9b5c
 
 ## Getting Started
 
 ### Prerequisites
 
-- Anaconda 3.6
+- Python ^3.8
+- Poetry 
 
 ### Getting started
 
@@ -21,19 +18,16 @@ Data are based on a subset of the ENGIE open dataset.
 cd /your/local/folder
 
 # Clone the WindML repository
-git clone https://github.com/marcodigennaro/WindML  
+git clone https://github.com/marcodigennaro/windml  
 
 # Enter the folder
-cd WindML/
+cd windml/
 
-# Create the Conda environment from the environment.yaml file
-conda env create -f environment.yaml 
+# Install the package
+poetry install
 
-# Activate the Conda environment
-conda activate windml
-
-# Install this package
-pip install . 
+# Activate the environment
+source .venv/bin/activate
 
 # Start Jupyter Lab
 jupyter-lab  

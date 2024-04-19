@@ -1,5 +1,11 @@
 import pandas as pd
-
+import os
+import time
+from memory_profiler import memory_usage
+import pandas as pd
+import dask.dataframe as dd
+import vaex
+import modin.pandas as mpd
 
 def select_time_subset(read_df, year=None, month=None, hour=None, date_column='Date_time'):
     """
@@ -28,15 +34,6 @@ def select_time_subset(read_df, year=None, month=None, hour=None, date_column='D
         subset = subset.loc[subset[date_column].dt.hour == hour]
 
     return subset
-
-
-import os
-import time
-from memory_profiler import memory_usage
-import pandas as pd
-import dask.dataframe as dd
-import vaex
-import modin.pandas as mpd
 
 
 def compare_data_libraries(folder_path):
