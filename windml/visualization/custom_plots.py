@@ -1,10 +1,9 @@
 import numpy as np
-from windrose import WindroseAxes, plot_windrose
+from windrose import WindroseAxes
 from matplotlib import cm
-
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from ..config import IMAGES_DIR
 
 def plot_monthly_evolution(df_energy, value_col):
     """
@@ -48,9 +47,8 @@ def plot_monthly_evolution(df_energy, value_col):
     ax[1].set_ylabel(f'{value_col}')
 
     plt.tight_layout()
-    plt.show()
     df_energy.drop(columns='color', inplace=True)
-
+    plt.savefig( img_dir / f'monthly_evolution_{value_col}.jpeg')
 
 def plot_windrose_subplots(data, *, direction, var, **kwargs):
     """Wrapper function to create subplots per axis"""
@@ -114,4 +112,4 @@ def scatter_plot(y_test, y_pred, title='Actual vs. Predicted', xlabel='True valu
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.plot([min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())], [min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())], 'k--')  # Diagonal line
-    plt.show()
+    plt.savefig( IMAGES_DIR / 'scatter_plot.jpeg' )

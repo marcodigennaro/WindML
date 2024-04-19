@@ -41,23 +41,44 @@ Data should be downloaded beforehand.
   1. Scalability
 
      - Tests the memory/speed performances of 4 python libraries
-
+          The results are shown below (test results from Processor: 3,1 GHz Dual-Core Intel Core i5 with Memory: 8 GB 2133 MHz)
+          
+          | File       | Size (MB) |
+          |------------|-----------|
+          | R80736.csv | 51.41     |
+          | R80721.csv | 51.20     |
+          | R80790.csv | 51.03     |
+          | R80711.csv | 51.68     |
+          
+          | Library | Time (sec) | Max memory usage (MB) |
+          |---------|------------|-----------------------|
+          | pandas  | 6.13       | 735.23 MB             |
+          | dask    | 18.38      | 603.20 MB             |
+          | vaex    | 3.11       | 268.40 MB             |
+          | modin   | 11.60      | 245.38 MB             |
+                    
   2. Time Series and Forecast: learning from the past:
      
      - Calculates and visualises 3 quantities as function of time (Average Energy, Produced Energy and Capacity Factor)
      
      - Performs Auto-Regression analysis and Regularizing gradient boosting 
-     
+
+          
   3. Data Analysis
 
      - Extract, transform, and load (ETL) 
      - Exploratory Data Analysis (EDA) 
      - Feature Selection Analysis
+
+     ![plot](https://github.com/marcodigennaro/windml/blob/main/images/windrose.jpeg)
+     ![plot](https://github.com/marcodigennaro/windml/blob/main/images/heatmap.jpeg)
      
+
   4. Machine Learning
 
      - Perform several regression algorithms on the data and compare them with Learning Curve
 
+     ![plot](https://github.com/marcodigennaro/windml/blob/main/images/learning_curve.jpeg)
 
 ### Data
 
