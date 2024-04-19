@@ -1,4 +1,3 @@
-import pandas as pd
 import os
 import time
 from memory_profiler import memory_usage
@@ -37,6 +36,28 @@ def select_time_subset(read_df, year=None, month=None, hour=None, date_column='D
 
 
 def compare_data_libraries(folder_path):
+    """
+    Compares the performance of different data processing libraries (pandas, dask, vaex, modin)
+    by reading, concatenating, and processing CSV files stored in a specified folder.
+
+    The function logs the execution time and memory usage for each library, providing insights into
+    their efficiency for handling multiple CSV files. The function is useful for benchmarking
+    the libraries on real-world data processing tasks.
+
+    Parameters:
+    - folder_path (str): The path to the directory containing the CSV files. The files should
+                         start with 'R' and have a '.csv' extension.
+
+    Notes:
+    - This function assumes that the CSV files share a consistent structure suitable for the
+      specified dtypes.
+    - Requires the installation of pandas, dask, vaex, modin, and memory_profiler.
+
+    Outputs:
+    - Console output logging the number of files processed, their sizes, the processing time,
+      and maximum memory usage for each library.
+    """
+
     libraries = ['pandas', 'dask', 'vaex', 'modin']
     dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
 
@@ -87,9 +108,9 @@ def load_one(filename, library='pandas'):
 
     df = polish_data(df)
 
-    memory_usage = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
+    used_memory = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
     print(f"Loading time: {end_time - start_time:.2f} seconds.")
-    print(f"Memory usage: {memory_usage:.2f} MB.")
+    print(f"Memory usage: {used_memory:.2f} MB.")
     print(f"{len(df)} Lines found.")
 
     return df
@@ -125,6 +146,29 @@ def load_all(folder_path):
 
 
 def polish_data(df):
+    """
+    Processes a DataFrame to enhance its usability for time series analysis by setting a datetime
+    index and extracting relevant datetime components such as year, month, day of the week, and hour of day.
+
+    This function modifies the DataFrame in-place and adds new columns that represent the temporal
+    features of the data, which are useful for downstream analysis and modeling tasks.
+
+    Parameters:
+    - df (DataFrame): A pandas DataFrame expected to contain a column named 'Date_time' with date-time information.
+
+    Returns:
+    - DataFrame: The modified DataFrame with the 'Date_time' column set as a datetime index and
+                 additional columns for 'Year', 'Month', 'DayOfWeek', and 'HourOfDay'.
+
+    Examples:
+    >>> df = pd.DataFrame({
+    ...     'Date_time': ['2021-01-01 00:00:00', '2021-01-01 01:00:00'],
+    ...     'Data': [100, 150]
+    ... })
+    >>> polished_df = polish_data(df)
+    >>> print(polished_df.columns)
+    Index(['Data', 'Year', 'Month', 'DayOfWeek', 'HourOfDay'], dtype='object')
+    """
 
     # It's good practice to assign the date time to the index
     df = df.set_index('Date_time')

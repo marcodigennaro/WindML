@@ -38,13 +38,25 @@ Data should be downloaded beforehand.
 
 ### Content of the Jupyter Notebooks
 
-  1. Column names analysis
-  2. Scalability
-  3. Data Analysis
-  4. Time Series and Forecast
-  5. Machine Learning 
+  1. Scalability
 
-6. Check KPI.md for more insights.
+     - Tests the memory/speed performances of 4 python libraries
+
+  2. Time Series and Forecast: learning from the past:
+     
+     - Calculates and visualises 3 quantities as function of time (Average Energy, Produced Energy and Capacity Factor)
+     
+     - Performs Auto-Regression analysis and Regularizing gradient boosting 
+     
+  3. Data Analysis
+
+     - Extract, transform, and load (ETL) 
+     - Exploratory Data Analysis (EDA) 
+     - Feature Selection Analysis
+     
+  4. Machine Learning
+
+     - Perform several regression algorithms on the data and compare them with Learning Curve
 
 
 ### Author
