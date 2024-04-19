@@ -59,6 +59,11 @@ Data should be downloaded beforehand.
      - Perform several regression algorithms on the data and compare them with Learning Curve
 
 
+### Data
+
+Data are available at this [URL](https://opendata-renewables.engie.com/pages/home/).
+Since this is not always functioning, a `data` folder was included in this package.
+
 ### Author
 
 Marco Di Gennaro 
@@ -69,11 +74,11 @@ Marco Di Gennaro
 ### License
 
 This project is licensed under the GPL v3 License - see the [LICENSE.md](https://github.com/marcodigennaro/WindML/blob/main/LICENSE.md) file for details
-
  
 ### Acknowledgements
 
-This project was created as demonstration for [toqua.ai](https://toqua.ai)
+- A previous analysis on this database can be found [here](https://github.com/matteobonanomi/dsnd-wind-farm?tab=readme-ov-file)
+- More on the XGBOOST algorithms can be found [here](https://www.youtube.com/watch?v=vV12dGe_Fho&t=1143s)
 
 
 

@@ -94,8 +94,32 @@ def compare_data_libraries(folder_path):
             f"Library: {library}, Time taken: {end_time - start_time:.2f} seconds, Max memory usage: {max_memory:.2f} MB")
 
 
-def load_one(filename, library='pandas'):
-    """Load a CSV file and measure the time and memory usage."""
+def load_one(filename, subset_size=False):
+    """
+        Loads a CSV file into a pandas DataFrame, applies data polishing, and optionally samples a subset
+        of the data. It also measures and reports the loading time and memory usage.
+
+        This function is useful for benchmarking data loading and processing performance, and for handling
+        large datasets by sampling.
+
+        Parameters:
+        - filename (str): The path to the CSV file to be loaded.
+        - subset_size (int, optional): If specified, the DataFrame will be sampled to this number of rows
+                                       to potentially reduce memory usage and processing time.
+
+        Returns:
+        - DataFrame: The processed DataFrame.
+
+        Outputs:
+        - Prints the loading time in seconds.
+        - Prints the memory usage in megabytes.
+        - Prints the number of lines in the final DataFrame.
+
+        Example:
+        >>> df = load_one("path/to/data.csv", subset_size=1000)
+        >>> print(df.head())
+    """
+
     start_time = time.time()
     dtypes = {'Date_time': 'object', 'Date_time_nr': 'int64', 'Wind_turbine_name': 'object'}
 
@@ -107,6 +131,12 @@ def load_one(filename, library='pandas'):
     end_time = time.time()
 
     df = polish_data(df)
+
+    if subset_size:
+        # Extract a subset of the database to speed up the calculation
+        # Adjust to your machine
+
+        df = df.sample(subset_size)
 
     used_memory = df.memory_usage(deep=True).sum() / (1024 ** 2)  # Convert bytes to MB
     print(f"Loading time: {end_time - start_time:.2f} seconds.")
