@@ -1,6 +1,8 @@
 # WindML
 
-This repo provides a data analysis exemple of wind turbine performance prediction based on weather parameters. A simple Machine Learning model is built to predict wind turbine power output and torque. ENGIE open dataset is used as a practice sample.
+This repo provides a tutorial of wind turbine performance prediction based on weather parameters. 
+
+Data are based on a subset of the ENGIE open dataset.
 
 ## Getting Started
 
