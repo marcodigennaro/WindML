@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from ..config import IMAGES_DIR
 
+
 def plot_monthly_evolution(df_energy, value_col):
     """
     Plots the time evolution of a specified value over months and the distribution per month,
@@ -48,7 +49,8 @@ def plot_monthly_evolution(df_energy, value_col):
 
     plt.tight_layout()
     df_energy.drop(columns='color', inplace=True)
-    plt.savefig( img_dir / f'monthly_evolution_{value_col}.jpeg')
+    plt.savefig(img_dir / f'monthly_evolution_{value_col}.jpeg')
+
 
 def plot_windrose_subplots(data, *, direction, var, **kwargs):
     """Wrapper function to create subplots per axis"""
@@ -65,7 +67,7 @@ def plot_windrose_subplots(data, *, direction, var, **kwargs):
     # Set the same scale for radial and angular axes
     ax.set_rmax(3500)  # Set the maximum radial value
     ax.set_rticks([700, 1400, 2100, 2800, 3500], labels=[
-                  '700', '1400', '2100', '2800', '3500'])  # Set radial ticks
+        '700', '1400', '2100', '2800', '3500'])  # Set radial ticks
     # Set the direction of the angular axis (counterclockwise)
     ax.set_theta_direction(-1)
     # Set the zero location of the angular axis (north)
@@ -93,7 +95,8 @@ def plot_learning_curves(lc_tuple, error_metric='mae'):
     plt.xscale('log')
     plt.grid(True)
     plt.legend()
-    return (fig, ax)
+    return fig, ax
+
 
 def scatter_plot(y_test, y_pred, title='Actual vs. Predicted', xlabel='True values', ylabel='Predicted values'):
     """
@@ -111,5 +114,6 @@ def scatter_plot(y_test, y_pred, title='Actual vs. Predicted', xlabel='True valu
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.plot([min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())], [min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())], 'k--')  # Diagonal line
-    plt.savefig( IMAGES_DIR / 'scatter_plot.jpeg' )
+    plt.plot([min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())],
+             [min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())], 'k--')  # Diagonal line
+    plt.savefig(IMAGES_DIR / 'scatter_plot.jpeg')
