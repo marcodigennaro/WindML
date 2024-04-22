@@ -34,7 +34,11 @@ jupyter-lab
 ```
 
 Run any of the jupyter notebooks to visualize data and perform ML algorithms.
-Data should be downloaded beforehand. 
+
+### Data
+
+Data are available at this [URL](https://opendata-renewables.engie.com/pages/home/).
+Since this is not always functioning, a `data` folder was included in this package.
 
 ### Content of the Jupyter Notebooks
 
@@ -85,10 +89,6 @@ Data should be downloaded beforehand.
      ![plot](https://github.com/marcodigennaro/windml/blob/main/images/scatter_plot.jpeg)
      ![plot](https://github.com/marcodigennaro/windml/blob/main/images/learning_curve.jpeg)
 
-### Data
-
-Data are available at this [URL](https://opendata-renewables.engie.com/pages/home/).
-Since this is not always functioning, a `data` folder was included in this package.
 
 ### Author
 
